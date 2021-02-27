@@ -298,7 +298,10 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Anuluj</button>
+
+                            <form name="delePerson" method="post" action='<c:url value="/editPerson/${person.id}"/>'>
                             <input type="submit" class="btn btn-danger pull-left" value="Tak"/>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -163,6 +163,8 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+                <form name="postEditTask" method="post" action='<c:url value="/tasks"/>'>
+
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-xl-12 col-md-12 mb-12">
@@ -174,9 +176,10 @@
                                         <div class="col-10">
                                       <select class="form-control" id="sel1">
                                         <option hidden>wybierz</option>
-                                        <option>kursant1</option>
-                                        <option>kursant2</option>
-                                        <option>kursant3</option>
+                                            <c:forEach items="${person}" var="title">
+                                                <option>${title.firstName} ${title.lastName}</option>
+                                            </c:forEach>
+
                                       </select>
                                         </div>
                                     </div>
@@ -210,37 +213,38 @@
                                 <div class="col-md-9 col-sm-9 col-xs-9">
                                 <div class="row">
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" value="border-left-success" checked>
-                                <i class="btn btn-success btn-circle btn-sm"></i> poziom junior</label>
+                                <label class="radio-inline"><input type="radio" name="color" value="success" checked>
+                                <i class="btn btn-success btn-circle btn-sm"></i> zielony </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" value="border-left-info" checked>
-                                <i class="btn btn-info btn-circle btn-sm"></i> poziom junior+</label>
+                                <label class="radio-inline"><input type="radio" name="color" value="info" checked>
+                                <i class="btn btn-info btn-circle btn-sm"></i> niebieski </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" value="border-left-secondary" checked>
-                                <i class="btn btn-secondary btn-circle btn-sm"></i> poziom mid</label>
+                                <label class="radio-inline"><input type="radio" name="color" value="secondary" checked>
+                                <i class="btn btn-secondary btn-circle btn-sm"></i> szary </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" value="border-left-primary" checked>
-                                <i class="btn btn-primary btn-circle btn-sm"></i> poziom mid+</label>
+                                <label class="radio-inline"><input type="radio" name="color" value="primary" checked>
+                                <i class="btn btn-primary btn-circle btn-sm"></i> granatowy </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" value="border-left-danger" checked>
-                                <i class="btn btn-danger btn-circle btn-sm"></i> poziom senior</label>
+                                <label class="radio-inline"><input type="radio" name="color" value="danger" checked>
+                                <i class="btn btn-danger btn-circle btn-sm"></i> czerwony </label>
                                 </div>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>             
-                    
-                    
-                    
-                    
- <input class="btn btn-success pull-left" type="submit" value="Wyślij" id="searchButton"></input>
-         
+                    </div>
+
+
+
+
+                    <input class="btn btn-success pull-left" type="submit" value="Wyślij" id="searchButton"></input>
+
+                </form>
 
 
         </div>

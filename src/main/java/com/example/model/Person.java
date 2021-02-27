@@ -1,9 +1,8 @@
 package com.example.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Person {
@@ -26,10 +25,13 @@ public class Person {
     private Integer git;
     private Integer checkbox;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "person")
+    private Set<Task> tasks = new HashSet<Task>();
+
     public Person() {
     }
 
-    public Person(long id, String firstName, String lastName, String gitHub, String start, Integer java, Integer bestPractice, Integer tdd, Integer question, Integer hibernate, Integer html, Integer jsp, Integer thymeeaf, Integer git, Integer checkbox) {
+    public Person(long id, String firstName, String lastName, String gitHub, String start, Integer java, Integer bestPractice, Integer tdd, Integer question, Integer hibernate, Integer html, Integer jsp, Integer thymeleaf, Integer git, Integer checkbox) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,7 +44,7 @@ public class Person {
         this.hibernate = hibernate;
         this.html = html;
         this.jsp = jsp;
-        this.thymeleaf = thymeeaf;
+        this.thymeleaf = thymeleaf;
         this.git = git;
         this.checkbox = checkbox;
     }
@@ -65,10 +67,6 @@ public class Person {
 
     public String getStart() {
         return start;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Integer getJava() {
@@ -109,6 +107,14 @@ public class Person {
 
     public Integer getCheckbox() {
         return checkbox;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setFirstName(String firstName) {
@@ -165,5 +171,9 @@ public class Person {
 
     public void setCheckbox(Integer checkbox) {
         this.checkbox = checkbox;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 }

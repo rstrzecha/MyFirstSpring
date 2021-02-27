@@ -20,7 +20,6 @@ public class PersonList {
 
     // wstrzyknięcie poprzez konstruktor
     private final PersonService personService;
-
     public PersonList(PersonService personService) {
         this.personService = personService;
     }
@@ -63,6 +62,16 @@ public class PersonList {
         personService.editPerson(newPerson, Long.parseLong(id));
         return new RedirectView("/editPerson/{id}");
     }
+
+    // delete person
+    @RequestMapping(value = {"/editPerson/{id}"}, method = RequestMethod.POST)
+    public RedirectView deletePerson(@PathVariable String id) {
+        personService.deletePerson(Long.parseLong(id));
+        return new RedirectView("/personList");
+    }
+
+
+
 
 
 }
