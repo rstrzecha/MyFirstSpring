@@ -139,7 +139,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Imię nazwisko</span>
-               
+
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -162,6 +162,7 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+            <form name="postEditPerson" method="post" action='<c:url value="/personList/${person.id}"/>'>
 
             <!-- Content Row -->
             <div class="row">
@@ -171,40 +172,39 @@
                             <div class="form-group row">
                                 <label for="firstName" class="col-2 col-form-label">Imię</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="text" placeholder="uzupełnij imię">
+                                    <input class="form-control" name="firstName" type="text" value="${person.firstName}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lastName" class="col-2 col-form-label">Nazwisko</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="text" placeholder="uzupełnij nazwisko">
+                                    <input class="form-control" name="lastName" type="text" value="${person.lastName}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="github" class="col-2 col-form-label">URL Git</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="text" placeholder="uzupełnij url do gita">
+                                    <input class="form-control" name="gitHub" type="text"  value="${person.gitHub}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="start" class="col-2 col-form-label">Od czego się zaczęło:</label>
                                 <div class="col-10">
-                                <textarea class="form-control" rows="5" id="start"
-                                          placeholder="napisz kilka słów co Cię zmotywowało aby zostać programistą..."></textarea>
+                                    <textarea class="form-control" name="start" rows="5">${person.start}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                               <label for="tech" class="col-2 col-form-label">Czy kursant opanował jakieś technologie?</label>
                               <div class="col-1">
-                                <label class="radio-inline"> <input type="radio" name="checkbox" value="1"> TAK </label>
+                                  <label class="radio-inline"> <input type="radio" name="checkbox" value="1" <c:if test="${person.checkbox eq '1'}">checked</c:if>> TAK </label>
                               </div>
 
                               <div class="col-1">
-                                <label class="radio-inline"> <input type="radio" name="checkbox" value="0"> NIE </label>
-                              </div>  
+                                  <label class="radio-inline"> <input type="radio" name="checkbox" value="0" <c:if test="${person.checkbox eq '0'}">checked</c:if>> NIE </label>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -212,71 +212,71 @@
 
 
                 <!-- Content Row -->
-
+<c:if test="${person.checkbox eq '1'}">
                 <div class="col-xl-12 col-md-12">
                     <div class="card shadow mb-4 card-header py-3">
 
                         <div class="row">
                             <div class="col-2">
                                 <label class="col-form-label">Java</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="java" type="text" value="${person.java}">
                             </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">Wzorce projektowe</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="bestPractice" type="text" value="${person.bestPractice}">
                              </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">TDD</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="tdd" type="text" value="${person.tdd}">
                             </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">Bazy danych SQL</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="question" type="text" value="${person.question}">
                             </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">Hibernate JPA</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="hibernate" type="text" value="${person.hibernate}">
                             </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">HTML CSS</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="html" type="text" value="${person.html}">
                             </div>
 
-                        </div> 
-                        
-                        <div class="row"> 
+                        </div>
+
+                        <div class="row">
                             <div class="col-2">
                                 <label class="col-form-label">JSP</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="jsp" type="text" value="${person.jsp}">
                             </div>
-                         
+
                             <div class="col-2">
                                 <label class="col-form-label">Thymeleaf</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="thymeleaf" type="text" value="${person.thymeleaf}">
                             </div>
 
                             <div class="col-2">
                                 <label class="col-form-label">git</label>
-                                <input class="form-control" type="text" placeholder="%">
+                                <input class="form-control" name="git" type="text" value="${person.git}">
                             </div>
                         </div>
                     </div>
 
                 </div>
-
+</c:if>
             </div>
-            <input class="btn btn-success pull-left" type="submit" value="Zapisz zmiany" id="searchButton"></input>
+            <input class="btn btn-success pull-left" type="submit" value="Zapisz zmiany" id="searchButton"/>
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                 Usuń
             </button>
-
+    </form>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -289,7 +289,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                
+
                         <!-- Modal body -->
                         <div class="modal-body">
                             Jeżeli usuniesz to już nie będzie odwrotu
@@ -303,9 +303,9 @@
                     </div>
                 </div>
             </div>
-         
 
-    
+
+
 
         </div>
         <!-- /.container-fluid -->

@@ -120,17 +120,21 @@
                                 </tfoot>
                                 <tbody>
 
+
+                            <c:forEach items="${person}" var="title">
+
                                 <tr>
-                                    <td>Przykładowe Imię</td>
-                                    <td>Przykładowe Nazwisko</td>
-                                    <td><a href="" class="btn btn-info btn-circle">
+                                    <td>${title.firstName}</td>
+                                    <td>${title.lastName}</td>
+                                    <td><a href='<c:url value="${title.gitHub}"/>' class="btn btn-info btn-circle">
                                         <i class="fas fa-info-circle"></i>
                                     </a></td>
-                                    <td>Start</td>
-                                    <td><a href="#" role="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#umiejetnosci"><i class="fas
+                                    <td>${title.start}</td>
+                                    <td><a href="#" role="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#umiejetnosci${title.id}"><i class="fas
                                         fa-check"></i></a></td>
 
-                                    <td><a href='<c:url value="/editPerson"/>'
+<%--                                    <td><a href='<c:url value="/editPerson"/>'--%>
+                                    <td><a href='<c:url value="/editPerson/${title.id}"/>'
                                            class="btn-right btn btn-primary" role="button">Edytuj</a>
                                     </td>
                                 </tr>
@@ -138,8 +142,9 @@
 
 
 
+
                                 <!-- The Modal -->
-                                <div class="modal" id="umiejetnosci">
+                                <div class="modal" id="umiejetnosci${title.id}">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
 
@@ -161,77 +166,77 @@
               text-primary">Umiejętności</h6>
                                                     </div>
                                                     <div class="card-body">
+
+
+
                                                         <h4 class="small
               font-weight-bold">Java <span
-                                                                class="float-right">50%</span></h4>
+                                                                class="float-right">${title.java}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: ${title.java}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">Wzorce
                                                             projektowe
                                                             <span
-                                                                    class="float-right">50%</span></h4>
+                                                                    class="float-right">${title.bestPractice}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: ${title.bestPractice}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">TDD <span
-                                                                class="float-right">50%</span></h4>
+                                                                class="float-right">${title.tdd}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: ${title.tdd}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">Bazy danych SQL
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.question}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: ${title.question}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
 
                                                         <h4 class="small
               font-weight-bold">Hibernate JPA
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.hibernate}%</span></h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: ${title.hibernate}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div><br>
 
                                                         <h4 class="small
               font-weight-bold">HTML, CSS
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.html}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: ${title.html}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">JSP
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.jsp}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: ${title.jsp}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">Thymeleaf
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.thymeleaf}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: ${title.thymeleaf}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                         <h4 class="small
               font-weight-bold">GIT
-                                                            <span class="float-right">50%</span></h4>
+                                                            <span class="float-right">${title.git}%</span></h4>
                                                         <div class="progress mb-4">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: ${title.git}%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
 
                                                     </div>
                                                 </div>
 
 
-
-
-
                                             </div>
 
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <a href="#">
+                                                <a href='<c:url value="/editPerson/${title.id}"/>'>
                                                     <input type="submit" class="btn
            btn-danger pull-left"
                                                            value="Poprawiam"/></a>
@@ -241,6 +246,7 @@
                                     </div>
                                 </div>
 
+                            </c:forEach>
                                 </tbody>
                             </table>
 
