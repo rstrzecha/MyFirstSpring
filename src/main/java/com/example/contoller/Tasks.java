@@ -1,10 +1,13 @@
 package com.example.contoller;
 
 import com.example.model.Person;
+import com.example.model.Task;
 import com.example.repository.PersonRepository;
 import com.example.service.PersonService;
+import com.example.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
@@ -18,12 +21,16 @@ public class Tasks {
 
     // wstrzyknięcie poprzez konstruktor
     private final PersonService personService;
-    public Tasks(PersonService personService) {
+    private final TaskService taskService;
+    public Tasks(PersonService personService, TaskService taskService) {
         this.personService = personService;
+        this.taskService = taskService;
     }
 
     @RequestMapping(value = {"/tasks"}, method = RequestMethod.GET)
-    public String getTasks() {
+    public String getTasks(Model model) {
+        List<Task> taskList = taskService.getTaskList();
+        model.addAttribute("task", taskList);
         return "tasks/tasks";
     }
 
@@ -34,13 +41,9 @@ public class Tasks {
         return "tasks/addTask";
     }
 
-    @RequestMapping(value = {"/addTask/{person_id}"}, method = RequestMethod.POST)
-    public RedirectView postAddTasks(Model model) {
-        List<Person> list = personService.getPersonList();
-        model.addAttribute("person", list);
+    @RequestMapping(value = {"/addNewTask"}, method = RequestMethod.POST)
+    public RedirectView saveAddTask(@ModelAttribute Task newTask) {
+        taskService.saveTask(newTask);
         return new RedirectView("/tasks");
     }
-
-
-
 }

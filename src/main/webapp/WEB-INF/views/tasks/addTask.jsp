@@ -139,7 +139,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Imię nazwisko</span>
-               
+
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -163,7 +163,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-                <form name="postEditTask" method="post" action='<c:url value="/tasks"/>'>
+                <form name="saveTask" method="post" action='<c:url value="/addNewTask"/>'>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -172,29 +172,30 @@
                                 <div class="card-header py-3">
 
                                     <div class="form-group row">
-                                        <label for="firstName" class="col-2 col-form-label">Wybierz kursanta</label>
+                                        <label for="choose" class="col-2 col-form-label">Wybierz kursanta</label>
                                         <div class="col-10">
-                                      <select class="form-control" id="sel1">
+                                      <select class="form-control" name="person.id" id="choose">
                                         <option hidden>wybierz</option>
                                             <c:forEach items="${person}" var="title">
-                                                <option>${title.firstName} ${title.lastName}</option>
+                                                <option value=${title.id}>${title.firstName} ${title.lastName}</option>
                                             </c:forEach>
-
                                       </select>
                                         </div>
                                     </div>
 
+                                    <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" name="creationDate">
+
                                     <div class="form-group row">
-                                        <label for="firstName" class="col-2 col-form-label">Deadline</label>
+                                        <label for="Deadline" class="col-2 col-form-label">Deadline</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="date" placeholder="">
+                                            <input class="form-control" type="date" name="deadline" id="Deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" max="3000-12-31" type="date" placeholder="">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="start" class="col-2 col-form-label">Tresć zadania:</label>
                                         <div class="col-10">
-                                            <textarea class="form-control" rows="5" id="start" placeholder="tutaj opisz zadanie..."></textarea>
+                                            <textarea class="form-control" name="description" rows="5" id="start" placeholder="tutaj opisz zadanie..."></textarea>
                                         </div>
                                     </div>
 
@@ -203,9 +204,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
-       
+
+
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="form-group row">
@@ -214,23 +215,23 @@
                                 <div class="row">
                                 <div class="col-sm-2">
                                 <label class="radio-inline"><input type="radio" name="color" value="success" checked>
-                                <i class="btn btn-success btn-circle btn-sm"></i> zielony </label>
+                                <i class="btn btn-success btn-circle btn-sm"></i> poziom junior </label>
                                 </div>
                                 <div class="col-sm-2">
                                 <label class="radio-inline"><input type="radio" name="color" value="info" checked>
-                                <i class="btn btn-info btn-circle btn-sm"></i> niebieski </label>
+                                <i class="btn btn-info btn-circle btn-sm"></i> poziom junior+ </label>
                                 </div>
                                 <div class="col-sm-2">
                                 <label class="radio-inline"><input type="radio" name="color" value="secondary" checked>
-                                <i class="btn btn-secondary btn-circle btn-sm"></i> szary </label>
+                                <i class="btn btn-secondary btn-circle btn-sm"></i> poziom mid </label>
                                 </div>
                                 <div class="col-sm-2">
                                 <label class="radio-inline"><input type="radio" name="color" value="primary" checked>
-                                <i class="btn btn-primary btn-circle btn-sm"></i> granatowy </label>
+                                <i class="btn btn-primary btn-circle btn-sm"></i> poziom mid+ </label>
                                 </div>
                                 <div class="col-sm-2">
                                 <label class="radio-inline"><input type="radio" name="color" value="danger" checked>
-                                <i class="btn btn-danger btn-circle btn-sm"></i> czerwony </label>
+                                <i class="btn btn-danger btn-circle btn-sm"></i> poziom senior </label>
                                 </div>
 
                                     </div>

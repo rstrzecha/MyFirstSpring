@@ -1,10 +1,9 @@
 package com.example.repository;
 
-import com.example.model.Person;
+import com.example.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 }

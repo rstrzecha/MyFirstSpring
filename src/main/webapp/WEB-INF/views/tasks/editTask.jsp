@@ -160,99 +160,104 @@
         </nav>
         <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+                <form name="saveTask" method="post" action='<c:url value="/tasks"/>'>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 mb-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+
+                                    <div class="form-group row">
+                                        <label for="firstName" class="col-2 col-form-label">Wybierz kursanta</label>
+                                        <div class="col-10">
+                                      <select class="form-control" name="person.id">
+                                        <option hidden>wybierz</option>
+                                            <c:forEach items="${person}" var="title">
+                                                <option value=${title.id}>${title.firstName} ${title.lastName}</option>
+                                            </c:forEach>
+
+                                      </select>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" name="creationDate">
+
+                                    <div class="form-group row">
+                                        <label for="firstName" class="col-2 col-form-label">Deadline</label>
+                                        <div class="col-10">
+                                            <input class="form-control" type="date" name="deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" max="3000-12-31" type="date" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="start" class="col-2 col-form-label">Tresć zadania:</label>
+                                        <div class="col-10">
+                                            <textarea class="form-control" name="description" rows="5" id="start" placeholder="tutaj opisz zadanie..."></textarea>
+                                        </div>
+                                    </div>
 
 
-
- <div class="col-lg-12">
-                <a href='<c:url value="/addTask"/>' class="btn btn-warning btn-block" style="margin-bottom: 25px;"><i
-                        class="fas fa-exclamation-triangle"></i><strong> Dodaj
-                    taska</strong></a>
-                </div>
-               
-
-
-
-                <div class="col-lg-12">
-                <div class="row">
-
-                <div class="col-lg-2">
-                <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                        <strong>Nowiciusz</strong>
-                        <div class="text-white-10 small">poziom junior</div>
-                    </div>
-                </div>
-
-
-
-                    <div class="card bg-info text-white shadow">
-                        <div class="card-body">
-                            <strong>Dojrzewajacy</strong>
-                            <div class="text-white-10 small">poziom junior+</div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="card bg-secondary text-white shadow">
-                        <div class="card-body">
-                            <strong>Wie co robi</strong>
-                            <div class="text-white-10 small">poziom mid</div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="card bg-primary text-white shadow">
-                        <div class="card-body">
-                            <strong>Doświadczony</strong>
-                            <div class="text-white-10 small">poziom mid+</div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="card bg-danger text-white shadow">
-                        <div class="card-body">
-                            <strong>Wyjadacz</strong>
-                            <div class="text-white-10 small">poziom senior</div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-10">
-                    <c:forEach items="${task}" var="todo">
-                        <div class="card mb-4 py-3 border-left-${todo.color} ">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">${todo.person.firstName} ${todo.person.lastName}
-                                    | <strong>Dodano:</strong> ${todo.creationDate}  | <strong>Deadline:</strong> ${todo.deadline} </div>
-                                    ${todo.description}
+                                </div>
                             </div>
                         </div>
-                    </c:forEach>
-                </div>
+                    </div>
+                    
+                    
+       
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="form-group row">
+
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                <div class="row">
+                                <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="color" value="success" checked>
+                                <i class="btn btn-success btn-circle btn-sm"></i> junior </label>
+                                </div>
+                                <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="color" value="info" checked>
+                                <i class="btn btn-info btn-circle btn-sm"></i> niebieski </label>
+                                </div>
+                                <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="color" value="secondary" checked>
+                                <i class="btn btn-secondary btn-circle btn-sm"></i> szary </label>
+                                </div>
+                                <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="color" value="primary" checked>
+                                <i class="btn btn-primary btn-circle btn-sm"></i> granatowy </label>
+                                </div>
+                                <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="color" value="danger" checked>
+                                <i class="btn btn-danger btn-circle btn-sm"></i> czerwony </label>
+                                </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                </div>
 
 
+                    <input class="btn btn-success pull-left" type="submit" value="Wyślij" id="searchButton"></input>
+
+                </form>
 
 
-
-
-
-            </div>
-            <!-- /.container-fluid -->
-      
         </div>
-        <!-- End of Main Content -->
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
 
    <%@include file="../dynamic/board.jspf"%>
 
-          <%--      <!-- Footer -->--%>
+    <%--      <!-- Footer -->--%>
 <%--      <footer class="sticky-footer bg-white">--%>
 <%--        <div class="container my-auto">--%>
 <%--          <div class="copyright text-center my-auto">--%>
@@ -294,7 +299,7 @@
 
    <%@include file="../dynamic/js.jspf"%>
 
-      <%--  <!-- Bootstrap core JavaScript-->--%>
+    <%--  <!-- Bootstrap core JavaScript-->--%>
 <%--  <script src="vendor/jquery/jquery.min.js"></script>--%>
 <%--  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
