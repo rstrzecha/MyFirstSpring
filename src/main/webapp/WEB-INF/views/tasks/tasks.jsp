@@ -178,14 +178,12 @@
                 <div class="row">
 
                 <div class="col-lg-2">
-                <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                        <strong>Nowiciusz</strong>
-                        <div class="text-white-10 small">poziom junior</div>
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            <strong>Nowiciusz</strong>
+                            <div class="text-white-10 small">poziom junior</div>
+                        </div>
                     </div>
-                </div>
-
-
 
                     <div class="card bg-info text-white shadow">
                         <div class="card-body">
@@ -194,8 +192,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="card bg-secondary text-white shadow">
                         <div class="card-body">
                             <strong>Wie co robi</strong>
@@ -203,16 +199,12 @@
                         </div>
                     </div>
 
-
-
                     <div class="card bg-primary text-white shadow">
                         <div class="card-body">
                             <strong>Doświadczony</strong>
                             <div class="text-white-10 small">poziom mid+</div>
                         </div>
                     </div>
-
-
 
                     <div class="card bg-danger text-white shadow">
                         <div class="card-body">

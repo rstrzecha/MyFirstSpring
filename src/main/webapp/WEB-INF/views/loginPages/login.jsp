@@ -1,4 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../dynamic/css.jspf"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="now" class="java.util.Date"/>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <body class="bg-gradient-primary">
 
@@ -19,12 +23,13 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Witaj !</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="post" action='<c:url value="/login"/>'>
+
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Wprowadź swój adres Email...">
+                      <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Wprowadź swój login...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Hasło">
+                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Hasło">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -32,7 +37,9 @@
                         <label class="custom-control-label" for="customCheck">Zapamiętaj mnie</label>
                       </div>
                     </div>
-                    <a href="../index.jsp" class="btn btn-primary btn-user btn-block">
+
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="login">
+<%--                    <a href="../index.jsp" class="btn btn-primary btn-user btn-block">--%>
                       Login
                     </a>
                     <hr>
