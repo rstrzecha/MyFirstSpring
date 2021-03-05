@@ -91,22 +91,22 @@
                   <div class="form-group row">
                     <label for="firstName" class="col-2 col-form-label">Imię</label>
                     <div class="col-10">
-                      <input class="form-control" name="firstName" type="text"
+                      <input class="form-control" name="firstName" type="text" id="firstName"
                              placeholder="uzupełnij imię">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="lastName" class="col-2 col-form-label">Nazwisko</label>
                     <div class="col-10">
-                      <input class="form-control" name="lastName" type="text"
+                      <input class="form-control" name="lastName" type="text" id="lastName"
                              placeholder="uzupełnij nazwisko">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="github" class="col-2 col-form-label">URL Git</label>
+                    <label for="gitHub" class="col-2 col-form-label">URL Git</label>
                     <div class="col-10">
-                      <input class="form-control" name="gitHub" type="text"
+                      <input class="form-control" name="gitHub" type="text" id="gitHub"
                              placeholder="uzupełnij url do gita">
                     </div>
                   </div>

@@ -174,7 +174,7 @@
                                     <div class="form-group row">
                                         <label for="firstName" class="col-2 col-form-label">Kursant</label>
                                         <div class="col-10">
-                                            <input class="form-control" name="firstName" type="text" value="${task.person.firstName} ${task.person.lastName}">
+                                            <input class="form-control" name="firstName" id="firstName" type="text" value="${task.person.firstName} ${task.person.lastName}">
                                         </div>
                                     </div>
 
@@ -182,16 +182,16 @@
                                     <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.creationDate}" />" name="creationDate">
 
                                     <div class="form-group row">
-                                        <label for="firstName" class="col-2 col-form-label">Deadline</label>
+                                        <label for="deadline" class="col-2 col-form-label">Deadline</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="date" name="deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>" max="3000-12-31" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>">
+                                            <input class="form-control" type="date" name="deadline" id="deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>" max="3000-12-31" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="start" class="col-2 col-form-label">Tresć zadania:</label>
+                                        <label for="description" class="col-2 col-form-label">Tresć zadania:</label>
                                         <div class="col-10">
-                                            <textarea class="form-control" name="description" rows="5" id="start" placeholder="tutaj opisz zadanie...">${task.description}</textarea>
+                                            <textarea class="form-control" name="description" id="description" rows="5" id="start" placeholder="tutaj opisz zadanie...">${task.description}</textarea>
                                         </div>
                                     </div>
 
