@@ -163,7 +163,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-                <form name="saveTask" method="post" action='<c:url value="/tasks"/>'>
+                <form name="postEditSaveTask" method="post" action='<c:url value="/tasks/${task.id}/${task.person.id}"/>'>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -172,31 +172,26 @@
                                 <div class="card-header py-3">
 
                                     <div class="form-group row">
-                                        <label for="firstName" class="col-2 col-form-label">Wybierz kursanta</label>
+                                        <label for="firstName" class="col-2 col-form-label">Kursant</label>
                                         <div class="col-10">
-                                      <select class="form-control" name="person.id">
-                                        <option hidden>wybierz</option>
-                                            <c:forEach items="${person}" var="title">
-                                                <option value=${title.id}>${title.firstName} ${title.lastName}</option>
-                                            </c:forEach>
-
-                                      </select>
+                                            <input class="form-control" name="firstName" type="text" value="${task.person.firstName} ${task.person.lastName}">
                                         </div>
                                     </div>
 
-                                    <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" name="creationDate">
+<%--                                    <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" name="creationDate">--%>
+                                    <input type="hidden" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.creationDate}" />" name="creationDate">
 
                                     <div class="form-group row">
                                         <label for="firstName" class="col-2 col-form-label">Deadline</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="date" name="deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />" max="3000-12-31" type="date" placeholder="">
+                                            <input class="form-control" type="date" name="deadline" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>" max="3000-12-31" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${task.deadline}"/>">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="start" class="col-2 col-form-label">Tresć zadania:</label>
                                         <div class="col-10">
-                                            <textarea class="form-control" name="description" rows="5" id="start" placeholder="tutaj opisz zadanie..."></textarea>
+                                            <textarea class="form-control" name="description" rows="5" id="start" placeholder="tutaj opisz zadanie...">${task.description}</textarea>
                                         </div>
                                     </div>
 
@@ -215,24 +210,25 @@
                                 <div class="col-md-9 col-sm-9 col-xs-9">
                                 <div class="row">
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" name="color" value="success" checked>
-                                <i class="btn btn-success btn-circle btn-sm"></i> junior </label>
+
+                                <label class="radio-inline"><input type="radio" name="color" value="success" <c:if test="${task.color eq 'success'}">checked</c:if>>
+                                <i class="btn btn-success btn-circle btn-sm"></i> poziom junior </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" name="color" value="info" checked>
-                                <i class="btn btn-info btn-circle btn-sm"></i> niebieski </label>
+                                <label class="radio-inline"><input type="radio" name="color" value="info" <c:if test="${task.color eq 'info'}">checked</c:if>>
+                                <i class="btn btn-info btn-circle btn-sm"></i> poziom junior+ </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" name="color" value="secondary" checked>
-                                <i class="btn btn-secondary btn-circle btn-sm"></i> szary </label>
+                                <label class="radio-inline"><input type="radio" name="color" value="secondary" <c:if test="${task.color eq 'secondary'}">checked</c:if>>
+                                <i class="btn btn-secondary btn-circle btn-sm"></i> poziom mid </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" name="color" value="primary" checked>
-                                <i class="btn btn-primary btn-circle btn-sm"></i> granatowy </label>
+                                <label class="radio-inline"><input type="radio" name="color" value="primary" <c:if test="${task.color eq 'primary'}">checked</c:if>>
+                                <i class="btn btn-primary btn-circle btn-sm"></i> poziom mid+ </label>
                                 </div>
                                 <div class="col-sm-2">
-                                <label class="radio-inline"><input type="radio" name="color" value="danger" checked>
-                                <i class="btn btn-danger btn-circle btn-sm"></i> czerwony </label>
+                                <label class="radio-inline"><input type="radio" name="color" value="danger" <c:if test="${task.color eq 'danger'}">checked</c:if>>
+                                <i class="btn btn-danger btn-circle btn-sm"></i> poziom senior </label>
                                 </div>
 
                                     </div>

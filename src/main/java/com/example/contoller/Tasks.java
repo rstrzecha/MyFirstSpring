@@ -8,6 +8,7 @@ import com.example.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
@@ -46,4 +47,19 @@ public class Tasks {
         taskService.saveTask(newTask);
         return new RedirectView("/tasks");
     }
+
+    @RequestMapping(value = {"/editTask/{id}"}, method = RequestMethod.GET)
+    public String getEditTasks(Model model, @PathVariable String id) {
+        model.addAttribute("task", taskService.getTask(Long.parseLong(id)));
+        return "tasks/editTask";
+    }
+
+    @RequestMapping(value = {"/tasks/{id}/{person_id}"}, method = RequestMethod.POST)
+    public RedirectView postEditSaveTasks(@ModelAttribute Task newTask, @PathVariable String person_id) {
+        taskService.editTask(newTask, personService.getPerson(Long.parseLong(person_id)));
+        return new RedirectView("/tasks");
+
+    }
+
+
 }

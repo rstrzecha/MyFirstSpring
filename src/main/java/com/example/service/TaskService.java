@@ -11,6 +11,8 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+//    private final PersonService personService;
+
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -29,14 +31,27 @@ public class TaskService {
     }
 
     // deleteById service
-    public void deletePerson(Long id){
+    public void deleteTask(Long id){
         taskRepository.deleteById(id);
         System.out.println("deleting person on id:" + id);
     }
 
-
     public void saveTask(Task task) {
         taskRepository.save(task);
     }
+
+    public void editTask(Task task, Person person) {
+        Task editedTask = new Task(
+                task.getId(),
+                task.getDeadline(),
+                task.getDescription(),
+                task.getColor(),
+                task.getCreationDate(),
+//                task.getPerson()
+                person
+        );
+        taskRepository.save(editedTask);
+    }
+
 
 }

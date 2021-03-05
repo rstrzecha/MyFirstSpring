@@ -38,6 +38,14 @@ public class Task {
         this.person = person;
     }
 
+    public Task(Long id, Date deadline, String description, String color, Person person) {
+        this.id = id;
+        this.deadline = deadline;
+        this.description = description;
+        this.color = color;
+        this.person = person;
+    }
+
     public Long getId() {
         return id;
     }
@@ -61,6 +69,8 @@ public class Task {
     public Person getPerson() {
         return person;
     }
+
+
 
     public void setId(Long id) {
         this.id = id;

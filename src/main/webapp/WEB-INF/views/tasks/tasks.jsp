@@ -217,13 +217,13 @@
 
                 <div class="col-lg-10">
                     <c:forEach items="${task}" var="todo">
-                        <div class="card mb-4 py-3 border-left-${todo.color} ">
+                        <a href='<c:url value="/editTask/${todo.id}"/>'  class="card mb-4 py-3 border-left-${todo.color} ">
                             <div class="card-body">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">${todo.person.firstName} ${todo.person.lastName}
                                     | <strong>Dodano:</strong> ${todo.creationDate}  | <strong>Deadline:</strong> ${todo.deadline} </div>
                                     ${todo.description}
                             </div>
-                        </div>
+                        </a>
                     </c:forEach>
                 </div>
 
